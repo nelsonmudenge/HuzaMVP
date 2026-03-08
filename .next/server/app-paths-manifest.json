@@ -1,0 +1,13 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/upload-image/route": "app/api/upload-image/route.js",
+  "/auth/login/page": "app/auth/login/page.js",
+  "/auth/signup/page": "app/auth/signup/page.js",
+  "/landlord/page": "app/landlord/page.js",
+  "/page": "app/page.js",
+  "/properties/[id]/page": "app/properties/[id]/page.js",
+  "/properties/page": "app/properties/page.js",
+  "/student/page": "app/student/page.js"
+}
