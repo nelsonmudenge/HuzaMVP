@@ -1,0 +1,171 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #007BFF;
+  --primary-dark: #0052AD;
+  --secondary: #28A745;
+  --accent: #FD7E14;
+  --dark: #0d1117;
+  --card-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* ── CUSTOM SCROLLBAR ─────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+/* ── SELECTION ────────────────────────────────────── */
+::selection {
+  background: rgba(0, 123, 255, 0.2);
+  color: var(--primary-dark);
+}
+
+/* ── FONT UTILITIES ───────────────────────────────── */
+.font-display { font-family: var(--font-display), sans-serif; }
+.font-body { font-family: var(--font-body), monospace; }
+
+/* ── GRADIENT TEXT ────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-green {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── GLASS MORPHISM ───────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── CARD HOVER EFFECTS ───────────────────────────── */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 50px rgba(0, 123, 255, 0.15);
+}
+
+/* ── VERIFIED BADGE GLOW ──────────────────────────── */
+.verified-glow {
+  box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+  animation: verified-pulse 2s infinite;
+}
+@keyframes verified-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+/* ── SHIMMER LOADING ──────────────────────────────── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── HERO PARALLAX ────────────────────────────────── */
+.parallax-bg {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ── PROGRESS STEPS ───────────────────────────────── */
+.step-active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+}
+.step-done {
+  background: var(--secondary);
+  color: white;
+}
+.step-pending {
+  background: #e5e7eb;
+  color: #9ca3af;
+}
+
+/* ── BUTTON STYLES ────────────────────────────────── */
+.btn-primary {
+  @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-xl
+         transition-all duration-200 active:scale-95 shadow-lg shadow-blue-200;
+}
+
+.btn-secondary {
+  @apply bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-3 px-6 rounded-xl
+         transition-all duration-200 active:scale-95;
+}
+
+.btn-outline {
+  @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white
+         font-semibold py-3 px-6 rounded-xl transition-all duration-200;
+}
+
+/* ── FORM INPUTS ──────────────────────────────────── */
+.input-field {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-white
+         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+         transition-all duration-200 placeholder-gray-400;
+}
+
+/* ── DASHBOARD SIDEBAR ────────────────────────────── */
+.sidebar-link {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600
+         hover:bg-primary-50 hover:text-primary-500 transition-all duration-200 cursor-pointer;
+}
+.sidebar-link.active {
+  @apply bg-primary-500 text-white shadow-lg;
+}
+
+/* ── MAP CONTAINER ────────────────────────────────── */
+.map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+/* ── DRAG AND DROP ZONE ───────────────────────────── */
+.dropzone-active {
+  border-color: var(--primary) !important;
+  background: rgba(0, 123, 255, 0.05) !important;
+  transform: scale(1.02);
+}
+
+/* ── STATS COUNTER ────────────────────────────────── */
+.stat-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.5);
+}
