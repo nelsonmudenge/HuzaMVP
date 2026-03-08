@@ -23,6 +23,9 @@ export default function Navbar() {
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handler);
+    // run once on mount to pick up the current scroll position – otherwise when
+    // navigating back from a scrolled page the bar can stay opaque at the top.
+    handler();
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
@@ -45,8 +48,10 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg' : 'bg-transparent'
+      // always use a light background so buttons (login/signup) remain legible.
+      // we keep a shadow when scrolled for separation.
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm ${
+        scrolled ? 'shadow-lg' : 'shadow-none'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
